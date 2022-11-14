@@ -1,3 +1,32 @@
+
+
+SEARCH & MATCH HACKS
+//Index-Match for dynamic searches
+=INDEX($A$1:$c,MATCH(F2,$A$1:$F,0)) //Index {range you want result from eg. A:C}; F2 {cell item being searched}; {we are searching in ranges A:F}; {exact match = 0}
+
+
+CURRENCY CONVERSION HACKS
+
+//Convert from one currency to another in Google Sheet (from GHS to USD)
+=A1*GOOGLEFINANCE("currency:GHSUSD") // cell A1 contains the GHS value to be converted to USD
+
 //Extract Google currency conversion rates according to dates 
 =index(GoogleFinance("CURRENCY:GBPGHS", "price",A1),2, 2) // extracting GBP/GHS currency prices for date in A1, selecting row 2 and column 2 (column after the date)
 
+
+LANGUAGE TRANSLATION HACKS
+//Convert from one language to another in Google Sheet (from English to French)
+=GOOGLETRANSLATE(A1, “EN”, “FR”) //cell A1 contains the english text to be translated
+
+
+IMPORT SHEET HACKS
+
+//Import sheet from "Sheet1" in google sheet to another google sheet where column 1 is the heading
+=QUERY(IMPORTRANGE("1UXgXJ8DBw4Cw4kQeqnjk1Jvts0j6PayXLrSJ2aMuKZk", "Sheet1!A2:O"), "SELECT *",1) // you can use sheet URL, name of sheet being imported,
+
+
+
+COUNTRY AND FLAG HACKS
+
+//Use Country Flags in Google Sheet using ISO-2 Country Codes...see https://www.translatorscafe.com/cafe/ISO-3166-Country-Codes.htm
+=IMAGE("https://www.translatorscafe.com/cafe/images/flags/"&B2&".gif") //B2 is the cell containing the country code 
